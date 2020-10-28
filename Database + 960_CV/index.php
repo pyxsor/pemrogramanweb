@@ -1,3 +1,7 @@
+<?php
+    include ('db/conn.php'); 
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -14,11 +18,13 @@
 <body>
 	<?php
 	$nama ="Handie Pramana Putra";
+	
 	$ttl ="Surabaya, 12 September 2000";
 	$alamat1="Jl. Simorejo 102-A, Sukomanunggal";
 	$alamat2="Surabaya. 60181";
 	$notel="081332049634";
 	$ig="saya_handie";
+	
 	$kuliah="UPN \"Veteran\" Jawa Timur";
 	$sma="SMA Muhammadiyah 10 Surabaya";
 	$smp="SMP Muhammadiyah 2 Surabaya";
@@ -67,23 +73,29 @@
 			</table>
 			</div>
 			<div class="push_1 macrotop">
+				<?php
+                    $q_profil = "SELECT * FROM profil";
+                    $h_profil = mysqli_query(connection(), $q_profil);
+                 ?>
 			<table class="space_profile">
+				<?php while ($data_profil = mysqli_fetch_array($h_profil)) : ?>
 				<tr>
 					<td><img class="lahir" id="lahir" src="images/location.png" alt="Icon Kelahiran"/></td>
-					<td><?php echo $ttl ?></td>
+					<td><?php echo $data_profil['ttl']; ?></td>
 				</tr>
 				<tr>
 					<td><img class="rumah" id="rumah" src="images/home.png" alt="Icon Rumah"/></td>
-					<td><p><?php echo $alamat1 ?><br><?php echo $alamat2 ?></p></td>
+					<td><?php echo $data_profil['alamat']; ?></td>
 				</tr>
 				<tr>
 					<td><img class="hp" id="hp" src="images/phone-call.png" alt="Icon HP"/></td>
-					<td><?php echo $notel ?></td>
+					<td><?php echo $data_profil['no_tel']; ?></td>
 				</tr>
 				<tr>
 					<td><img class="instagram" id="instagram" src="images/instagram.png" alt="Icon IG"/></td>
-					<td><?php echo $ig ?></td>
+					<td><?php echo $data_profil['ig']; ?></td>
 				</tr>
+				<?php endwhile ?>
 			</table>
 			</div>
 			<br>
