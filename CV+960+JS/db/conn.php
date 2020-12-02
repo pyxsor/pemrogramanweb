@@ -1,8 +1,8 @@
 <?php 
 
    $servername = "localhost";
-   $username = "root";
-   $password = "";
+   $username = "pemweb";
+   $password = "1";
    $database = "cv";
 
    $conn = mysqli_connect($servername,$username,$password,$database);

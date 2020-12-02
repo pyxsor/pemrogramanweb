@@ -9,6 +9,6 @@ if(isset($_POST['jenjang_pendidikan'])){
     if(mysqli_query($conn,$sql)){
         echo "Berhasil Memasukkan Data";
     } else {
-        echo "Gagal Memasukkan Data <br/>".mysqli_error($conn);
+        echo "Error Memasukkan Data <br/>".mysqli_error($conn);
     }
 }

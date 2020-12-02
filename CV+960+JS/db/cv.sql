@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Des 2020 pada 09.39
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.10
+-- Generation Time: Dec 02, 2020 at 01:12 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil`
+-- Table structure for table `profil`
 --
 
 CREATE TABLE `profil` (
@@ -36,7 +36,7 @@ CREATE TABLE `profil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `profil`
+-- Dumping data for table `profil`
 --
 
 INSERT INTO `profil` (`id_profil`, `ttl`, `alamat`, `no_tel`, `ig`) VALUES
@@ -45,33 +45,30 @@ INSERT INTO `profil` (`id_profil`, `ttl`, `alamat`, `no_tel`, `ig`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `riwayatpendidikan`
+-- Table structure for table `riwayatpendidikan`
 --
 
 CREATE TABLE `riwayatpendidikan` (
   `jenjang_pendidikan` varchar(20) NOT NULL,
-  `nama_instansi` varchar(50) DEFAULT NULL
+  `nama_instansi` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `riwayatpendidikan`
+-- Dumping data for table `riwayatpendidikan`
 --
 
 INSERT INTO `riwayatpendidikan` (`jenjang_pendidikan`, `nama_instansi`) VALUES
-('S1 ', 'UPN V JATIM '),
-('S2', 'ui'),
-('S3', 'HARVARD'),
-('S4', 'GALAXY'),
-('SD', 'SDN ASEMROWO 1 SURABAYA'),
-('SMA', 'SMA MUHAMMADIYAH 10 SURABAYA'),
-('SMP', 'SMP MUHAMMADIYAH 2 SURABAYA');
+('S1', 'UPN Veteran Jawa Timur'),
+('SD', 'Negeri Asemrowo 1 Surabaya'),
+('SMA', 'Muhammadiyah 10 Surabaya'),
+('SMP', 'Muhammadiyah 2 Surabaya');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `riwayatpendidikan`
+-- Indexes for table `riwayatpendidikan`
 --
 ALTER TABLE `riwayatpendidikan`
   ADD PRIMARY KEY (`jenjang_pendidikan`);

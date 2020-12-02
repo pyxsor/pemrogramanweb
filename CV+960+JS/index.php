@@ -7,15 +7,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>Curiculum Vitae</title>
-	
+	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 	<link href="css/960.css" rel="stylesheet" />
 	<link href="css/text.css" rel="stylesheet" />
 	<link href="css/reset.css" rel="stylesheet" />
 	<link href="css/style.css" rel="stylesheet" />
-	<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
-	
 </head>
 
+	
+	
+	
 <body>
 	<?php
 	$nama ="Handie Pramana Putra";
@@ -31,7 +32,6 @@
 	$smp="SMP Muhammadiyah 2 Surabaya";
 	$sd="SD Negeri Asemrowo 1 Surabaya";
 	?>
-	
 	
 	<div class="wrapper">
 		<div class="box">
@@ -144,25 +144,47 @@
 				</tr>
 			</table>
 		</div>
-			<div class="push_1 macrotop ajx">
-				<form action="save.php" method="POST">
-				<select name="jenjang_pendidikan">
-					<option selected disabled> -----Pilih-----</option>
-                   	<option value="SD">SD</option>
-               		<option value="SMP">SMP</option>
-					<option value="SMA">SMA</option>
-					<option value="S1">S1</option>
-					<option value="S2">S2</option>
-					<option value="S3">S3</option>				
-				</select>	
+			<div class="push_1 macrotop">
+				<div class="insert">
+             		<form action="save.php" method="POST">
+            		<input type="text" name="jenjang_pendidikan" placeholder="Jenjang Sekolah Anda.."/>
+            		<input type="text" name="nama_instansi" placeholder="Nama Sekolah Anda.."/>
+           			<input type="submit" name="submit" value="submit"/>
+					</form>
+				</div>
+				
+			<table>
+				<tr>
+					<td><h3>• 2018 - Sekarang</h3></td>	
+				</tr>
+				<tr>
+					<td><?php echo $kuliah ?></td>
+				</tr>
+				<tr>
+					<td><h3>• 2015 - 2018</h3></td>
+				</tr>
+				<tr>
+					<td><?php echo $sma ?></td>
+				</tr>
+				<tr>
+					<td><h3>• 2012 - 2015</h3></td>
+				</tr>
+				<tr>
+					<td><?php echo $smp ?></td>
+				</tr>
+				<tr>
+					<td><h3>• 2007 - 2012</h3></td>
+				</tr>
+				<tr>
+					<td><?php echo $sd ?></td>
+				</tr>
+			</table>
+				<div id="content">
+				
+				</div>
 				
 				
-				<input type="text" name="nama_instansi" placeholder="Masukkan Nama Instansi"/>
-				<input type="submit" name="submit" value="submit"/>
-			</form>
-			<div id="content">
-            
-        	</div>
+			
 			</div>
 		</div>
 		
@@ -282,48 +304,46 @@
 		
 	</div>
 	</div>
-
 	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			loadData();
 
-        <script type="text/javascript">
-            $(document).ready(function(){
-               loadData();
+			$('fo1rm').on('submit',function(e){
+			e.preventDefault();
+			$.ajax({
+			type:$(this).attr('method'),
+			url:$(this).attr('action'),
+			data:$(this).serialize(),
+								success:function(){
+									loadData();
+									resetForm();
+								}
+							});
+						})
+					})
 
-               $('form').on('submit',function(e){
-                   e.preventDefault();
-                   $.ajax({
-                       type:$(this).attr('method'),
-                       url:$(this).attr('action'),
-                       data:$(this).serialize(),
-                       success:function(){
-                           loadData();
-                           resetForm();
-                       }
-                   });
-               })
-            })
-
-            function loadData(){
-                $.get('data.php',function(data){
-                    $('#content').html(data)
-                    $('.hapusData').click(function(e){
-                        e.preventDefault();
-                        $.ajax({
-                       type:'get',
-                       url:$(this).attr('href'),
-                       success:function(){
-                           loadData();
+					function loadData(){
+						$.get('data.php',function(data){
+							$('#content').html(data)
+							$('.hapusData').click(function(e){
+								e.preventDefault();
+								$.ajax({
+									type:'get',
+									url:$(this).attr('href'),
+									success:function(){
+										loadData();
                            
-                       }
-                   });
-                    })
-                })
-            }
+									}
+								});
+							})
+						})
+					}
 
-            function resetForm(){
-                $('[type=text]').val('');
-                $('[name=jenjang_pendidikan]').focus();
-            }
-        </script>
+					function resetForm(){
+						$('[type=text]').val('');
+						$('[name=jenjang_pendidikan]').focus();
+					}
+        		</script>
 </body>
 </html>
